@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update user</title>
+    <meta charset="UTF-8">
+    <script>
+        function updateUser() {
+            username = document.getElementById("inputName").value;
+            password = document.getElementById("inputPassword").value;
+
+            var req = new XMLHttpRequest();
+            var json = JSON.stringify({"username": username, "password": password})
+            req.open("PUT", "/update");
+            req.setRequestHeader('Content-type', 'application/json');
+            req.addEventListener("load", function(){
+                window.location.replace("/update");
+            });
+            req.send(json);
+            console.log("username: " + username + " password: " + password);
+        }
+    </script>
+</head>
+<body>
+    <h1>Update user</h1>
+        Username: <input id="inputName" name="username" type="text" /><br/>
+        Password: <input id="inputPassword" name="password" type="password" /><br/>
+        <br/>
+    <button onclick="updateUser()">Submit</button>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Private File</title>
+</head>
+<body>
+    <script>
+        function deleteUser() {
+            var req = new XMLHttpRequest();
+            req.open("DELETE", "/private/file.html");
+            req.setRequestHeader('Content-type', 'text/html');
+            req.addEventListener("load", function(){
+                window.location.replace("/delete");
+            })
+            req.send();
+        }
+    </script>
+    <h1>Private File!</h1>
+    <p>This file is in a private directory, you should not be able to see it! Only if you are logged in</p>
+    <a href="/logout">Logout</a><br>
+    <a href="/public/update.html">Update user</a><br>
+    <a onclick="deleteUser()" href="">Delete user</a>
+</body>
+</html>
